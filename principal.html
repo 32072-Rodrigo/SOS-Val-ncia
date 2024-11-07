@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda para Valência</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <style>
+        /* Estilo base */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        /* Contêiner principal com margem */
+        .container {
+            max-width: 1400px; /* Ajuste de largura para caber a margem dos dois lados */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px; /* Margem interna menor para verificação */
+        }
+
+        /* Navbar com logos */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #467242;
+            padding: 10px 20px;
+            justify-content: space-between;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            max-height: 65px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+        }
+
+        .nav-links a:hover {
+            background-color: #26532e;
+            border-radius: 5px;
+        }
+
+        /* Seção de destaque */
+        .highlight-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #dbdbdb;
+            color: white;
+            position: relative;
+            width: 100%;
+            max-width: 1000px; /* Controla a largura máxima para margem dos dois lados */
+             margin: 100px auto 20px auto; /* Aumente o valor de margin-top (primeiro valor) */
+            overflow: hidden;
+            height: 500px;
+            margin-bottom: 100px; /* Altere este valor conforme necessário */
+        }
+
+        .highlight-overlay {
+            position: relative;
+            width: 110%;
+            clip-path: polygon(0 0, 70% 0, 50% 100%, 0 100%);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-left: 20px;
+            height: 100%;
+            z-index: 1;
+            background-color: transparent;
+        }
+
+        .highlight-overlay::before {
+            content: '';
+            background: url("Imagens/pabola.jpeg") no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            clip-path: inherit;
+            pointer-events: none;
+        }
+
+        .highlight-text {
+            position: relative;
+            z-index: 1;
+            color: #51731b;
+            text-align: left;
+            margin: 0;
+        }
+
+        .highlight-text h2 {
+            font-size: 4.3rem;
+            color: #51731b;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-text p {
+            font-size: 1rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .highlight-button {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .highlight-description {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            max-width: 35%;
+            color: black;
+            z-index: 2;
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* Cartões de informação */
+        .info-cards {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            gap: 15px;
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            color: white;
+        }
+
+        .card-1 { background-color: #bdc7ad; }
+        .info-card h3 {
+            font-size: 1.5rem;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+        }
+
+         .card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom:50px;
+    }
+
+    .card {
+        background-color: #467242;
+        border-radius: 0px; /* Bordas suavemente arredondadas */
+        width: calc(30% - 20px); /* Reduzido para 25% da largura do container */
+        max-width: 450px; /* Tamanho máximo de cada card */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px; /* Reduzida a altura das imagens */
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 15px; /* Reduzido o espaçamento interno */
+    }
+
+    .card-content h3 {
+        font-size: 1.2em; /* Reduzido o tamanho do título */
+        margin: 10px 0;
+        color: #f0f0f0;
+    }
+
+    .card-content p {
+        font-size: 0.9em; /* Texto menor para descrição */
+        color: #d9d9d9;
+        margin-bottom: 10px;
+    }
+
+    .card-content a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        border: 2px solid #333;
+        padding: 5px 10px; /* Botão menor */
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .card-content a:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            width: calc(45% - 20px); /* Ocupa 50% da largura em dispositivos menores */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card {
+            width: calc(100% - 20px); /* Ocupa 100% da largura em dispositivos muito pequenos */
+        }
+    }
+
+    table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        table th {
+            background-color: #467242;
+            color: white;
+            font-weight: bold;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .observacoes {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+         /* Estilo para o rodapé */
+        footer {
+    padding: 20px 0;
+    color: black;
+    text-align: center;
+    background-color: #transparent;
+    color: black;
+    font-style:italic;
+    font-size: 14px;
+}
+
+.swiper-container {
+    width: 100%; /* Certificar-se de que ocupa toda a largura do footer */
+    max-width: 1200px; /* Limita a largura máxima */
+    margin: 0 auto;
+    overflow: hidden; /* Evita transbordo horizontal */
+}
+
+.swiper-slide img {
+    max-width: 100px; /* Controla o tamanho máximo das imagens */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centraliza as imagens */
+}
+
+        .barra-lateral {
+            display: inline-block;
+            background-color: #FFD700; /* Cor amarela */
+            padding: 10px 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2d2f31;
+            transform: rotate(-90deg);
+            transform-origin: left;
+            margin-right: 20px; /* Espaço entre a barra e os cartões */
+        }
+
+        /* Cartões de pontos de recolha */
+        .card-grid-container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .card {
+            background-color: #467242;
+            border-radius: 0px;
+            width: calc(30% - 20px);
+            max-width: 450px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #f0f0f0;
+        }
+
+        .card-content p {
+            font-size: 0.9em;
+            color: #d9d9d9;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="navbar">
+            <div class="logos">
+                <img src="Imagens/navb1.jpg" alt="Logo 1" class="logo">
+                <img src="Imagens/navb2.png" alt="Logo 2" class="logo">
+                <img src="Imagens/navb3.jpg" alt="Logo 2" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="principal.html">Início</a>
+                <a href="comoajudar.html">Como Ajudar</a>
+                <a href="https://www.instagram.com/vizinhosajanela/profilecard/?igsh=MTdxZjhpcTBib3NidQ==">Instagram</a>
+                <a href="https://www.facebook.com/groups/720639642155376/?ref=share">Facebook</a>
+            </div>
+        </nav>
+
+        <div class="highlight-section">
+            <div class="highlight-overlay">
+                <div class="highlight-text">
+                    <h2>Campanha de </h2> <h2>Apoio a Valência</h2>
+
+                </div>
+            </div>
+
+            <div class="highlight-description">
+                <p>Apoio às vítimas das inundações com as suas doações. Juntos podemos fazer a diferença e ajudar quem precisa neste momento difícil.</p>
+            </div>
+        </div>
+        <p align="center">PONTOS DE RECOLHA</p>
+        <div class="card-grid">
+            <div class="card">
+                <img src="Imagens/locrecolha1.png " alt="Bitcoin">
+                <div class="card-content">
+                    <h3>Agrupamento de escolas Matilde Araújo</h3>
+                    <p>Rua de Matarraque, 399 Cascais 2785-694 São Domingos de Rana</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="Imagens/locrecolha2.png" alt="Ethereum">
+                <div class="card-content">
+                    <h3>Solfraterno</h3>
+                    <p>Av. Comendador Nunes Corrêa 18 Carnaxide 2790-225</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="Imagens/locrecolha3.png" alt="Litecoin">
+                <div class="card-content">
+                    <h3>CBWEED</h3>
+                    <p>Rua Doutor Manuel de Arriaga 5B Carcavelos 2775-602</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Imagens/locrecolha4.png" alt="Ripple">
+                <div class="card-content">
+                    <h3>Colégio Park International School </h3>
+                    <p>Estr. Alfragide 94 Amadora 2610-015</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Imagens/locrecolha5.png" alt="Cardano">
+                <div class="card-content">
+                    <h3>Instituto Español “Giner de los Ríos” e AMPA | Dafundo</h3>
+                    <p>Rua Direita do Dafundo 29 Linda-a-Velha 1495-750</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Imagens/locrecolha6.png" alt="Solana">
+                <div class="card-content">
+                    <h3>Paço de Arcos Clube Basquetebol</h3>
+                    <p>Av. Elvira Velez 1, Paço de Arcos, Portugal</p>
+                </div>
+            </div>
+
+             <div class="card">
+                <img src="Imagens/locrecolha7.png" alt="Solana">
+                <div class="card-content">
+                    <h3>Restaurante A Quinta </h3>
+                    <p>Largo Henrique de Paiva Couceiro 3 Oeiras 2780</p>
+                </div>
+            </div>
+
+             <div class="card">
+                <img src="Imagens/locrecolha8.png" alt="Solana">
+                <div class="card-content">
+                    <h3>Sport Algés e Dafundo</h3>
+                    <p>Avenida dos Combatentes da Grande Guerra 88 Algés 1495-120</p>
+                </div>
+            </div>
+
+             <div class="card">
+                <img src="Imagens/locrecolha9.png" alt="Solana">
+                <div class="card-content">
+                    <h3>ToniExpress | Albergaria a Velha</h3>
+                    <p>RUA 1º DE DEZEMBRO, EDIFÍCIO COSTA DO SOL S/N 2ºDTO. ALBERGARIA-A-VELHA 3850-002</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Substitua as URLs abaixo pelos logotipos dos seus patrocinadores -->
+            <div class="swiper-slide"><img src="Imagens/AFSO logo.jpg" alt="Patrocinador 1"></div>
+            <div class="swiper-slide"><img src="Imagens/Agrup Escolas Matilde Araújo logo.jpg" alt="Patrocinador 2"></div>
+            <div class="swiper-slide"><img src="Imagens/CBWEED logo.png" alt="Patrocinador 3"></div>
+            <div class="swiper-slide"><img src="Imagens/AMPA logo.jpg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/AMPEL logo.jpeg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/aquinta.png" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/Associação Fábrica de Alternativas.jpg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/FV TP BLACK.png" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/IEL logo.jpg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/LogoVaj.jpg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/pa.jfif" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/Park International School.jpg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/Rotaract logo.jpeg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/SOLFRATERNO.jpg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/Sport Algés e Dafundo.jpeg" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/TONIEXPRESS.JPG" alt="Patrocinador 4"></div>
+            <div class="swiper-slide"><img src="Imagens/logoescola.png" alt="Patrocinador 4"></div>
+
+
+
+            <!-- Adicione mais slides conforme necessário -->
+        </div>
+    </div>
+    <p>João Ricardo e Rodrigo Rodrigues do 12º ano do curso Profissional Técnico de Informática - Sistemas</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    // Inicializa o Swiper
+    const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+        delay: 2000, // Tempo em milissegundos
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        320: { slidesPerView: 2, spaceBetween: 10 }, // Para telas pequenas
+        640: { slidesPerView: 3, spaceBetween: 20 }, // Para tablets
+        1024: { slidesPerView: 4, spaceBetween: 30 }, // Para desktops
+    },
+});
+</script>
+</body>
+</html>
